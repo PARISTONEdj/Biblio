@@ -1,0 +1,25 @@
+{
+  "name": "bookapi",
+  "version": "1.0.0",
+  "description": "API de gestion de bibliotheque",
+  "main": "serveur.js",
+  "scripts": {
+    "test": "mocha -r esm 'test/**/*.js'"
+  },
+  "author": "carlos djoyou",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "chai": "^5.0.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3",
+    "nodemon": "^3.0.2"
+  },
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.2"
+  }
+}

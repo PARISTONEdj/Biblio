@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.3 on win32)" generated="20231231 23:24:48.372" rpa="false" schemaversion="4">
+<suite id="s1" name="testLivre" source="F:\Node\Validation\BookApi\testLivre.robot">
+<test id="s1-t1" name="Test Enregistrer Un Livre" line="12">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>title=Livre de Test</arg>
+<arg>author=Auteur de Test</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231231 23:24:48.497" level="INFO">${payload} = {'title': 'Livre de Test', 'author': 'Auteur de Test'}</msg>
+<status status="PASS" starttime="20231231 23:24:48.496" endtime="20231231 23:24:48.497"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/enregistrer</arg>
+<arg>json=${payload}</arg>
+<arg>url=${BASE_URL}/enregistrer</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20231231 23:24:48.498" level="FAIL">Non-existing index or alias 'http://localhost:5000/books/enregistrer'.</msg>
+<status status="FAIL" starttime="20231231 23:24:48.497" endtime="20231231 23:24:48.499"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" starttime="20231231 23:24:48.499" endtime="20231231 23:24:48.499"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.text}</arg>
+<arg>Livre enregistré avec succès</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20231231 23:24:48.499" endtime="20231231 23:24:48.500"/>
+</kw>
+<doc>Teste l'enregistrement d'un livre</doc>
+<status status="FAIL" starttime="20231231 23:24:48.496" endtime="20231231 23:24:48.500">Non-existing index or alias 'http://localhost:5000/books/enregistrer'.</status>
+</test>
+<test id="s1-t2" name="Test Liste Des Livres" line="20">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/liste/</arg>
+<arg>url=${BASE_URL}/liste/</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20231231 23:24:48.502" level="FAIL">Non-existing index or alias 'http://localhost:5000/books/liste/'.</msg>
+<status status="FAIL" starttime="20231231 23:24:48.502" endtime="20231231 23:24:48.503"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" starttime="20231231 23:24:48.503" endtime="20231231 23:24:48.503"/>
+</kw>
+<doc>Teste la récupération de la liste des livres</doc>
+<status status="FAIL" starttime="20231231 23:24:48.501" endtime="20231231 23:24:48.503">Non-existing index or alias 'http://localhost:5000/books/liste/'.</status>
+</test>
+<test id="s1-t3" name="Test Supprimer Un Livre" line="27">
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/delete/${ID}</arg>
+<arg>url=${BASE_URL}/delete/${ID}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20231231 23:24:48.506" level="FAIL">Non-existing index or alias 'http://localhost:5000/books/delete/658f44d232cace280f590d1c'.</msg>
+<status status="FAIL" starttime="20231231 23:24:48.505" endtime="20231231 23:24:48.506"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" starttime="20231231 23:24:48.507" endtime="20231231 23:24:48.507"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.text}</arg>
+<arg>Livre supprimé avec succès</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20231231 23:24:48.507" endtime="20231231 23:24:48.507"/>
+</kw>
+<doc>Teste la suppression d'un livre</doc>
+<status status="FAIL" starttime="20231231 23:24:48.505" endtime="20231231 23:24:48.508">Non-existing index or alias 'http://localhost:5000/books/delete/658f44d232cace280f590d1c'.</status>
+</test>
+<test id="s1-t4" name="Test Modifier Un Livre" line="34">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>title=Nouveau Titre</arg>
+<arg>author=Nouvel Auteur</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231231 23:24:48.511" level="INFO">${payload} = {'title': 'Nouveau Titre', 'author': 'Nouvel Auteur'}</msg>
+<status status="PASS" starttime="20231231 23:24:48.511" endtime="20231231 23:24:48.511"/>
+</kw>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/update/${ID}</arg>
+<arg>json=${payload}</arg>
+<arg>url=${BASE_URL}/update/${ID}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20231231 23:24:48.513" level="FAIL">Non-existing index or alias 'http://localhost:5000/books/update/658f44d232cace280f590d1c'.</msg>
+<status status="FAIL" starttime="20231231 23:24:48.512" endtime="20231231 23:24:48.514"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" starttime="20231231 23:24:48.514" endtime="20231231 23:24:48.514"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.text}</arg>
+<arg>Livre modifié avec succès</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20231231 23:24:48.514" endtime="20231231 23:24:48.514"/>
+</kw>
+<doc>Teste la modification d'un livre</doc>
+<status status="FAIL" starttime="20231231 23:24:48.510" endtime="20231231 23:24:48.515">Non-existing index or alias 'http://localhost:5000/books/update/658f44d232cace280f590d1c'.</status>
+</test>
+<test id="s1-t5" name="Test Consulter Un Livre" line="42">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/selectone/${ID}</arg>
+<arg>url=${BASE_URL}/selectone/${ID}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20231231 23:24:48.517" level="FAIL">Non-existing index or alias 'http://localhost:5000/books/selectone/658f44d232cace280f590d1c'.</msg>
+<status status="FAIL" starttime="20231231 23:24:48.517" endtime="20231231 23:24:48.517"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" starttime="20231231 23:24:48.518" endtime="20231231 23:24:48.518"/>
+</kw>
+<doc>Teste la consultation d'un livre</doc>
+<status status="FAIL" starttime="20231231 23:24:48.516" endtime="20231231 23:24:48.518">Non-existing index or alias 'http://localhost:5000/books/selectone/658f44d232cace280f590d1c'.</status>
+</test>
+<test id="s1-t6" name="Test Rechercher Des Livres" line="49">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${BASE_URL}/recherches/Test</arg>
+<arg>url=${BASE_URL}/recherches/Test</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20231231 23:24:48.521" level="FAIL">Non-existing index or alias 'http://localhost:5000/books/recherches/Test'.</msg>
+<status status="FAIL" starttime="20231231 23:24:48.520" endtime="20231231 23:24:48.521"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" starttime="20231231 23:24:48.521" endtime="20231231 23:24:48.521"/>
+</kw>
+<doc>Teste la recherche de livres</doc>
+<status status="FAIL" starttime="20231231 23:24:48.520" endtime="20231231 23:24:48.522">Non-existing index or alias 'http://localhost:5000/books/recherches/Test'.</status>
+</test>
+<status status="FAIL" starttime="20231231 23:24:48.373" endtime="20231231 23:24:48.524"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="6" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="6" skip="0" id="s1" name="testLivre">testLivre</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
